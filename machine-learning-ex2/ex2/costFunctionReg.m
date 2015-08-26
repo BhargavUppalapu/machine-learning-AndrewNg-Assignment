@@ -6,7 +6,7 @@ function [J, grad] = costFunctionReg(theta, X, y, lambda)
 
 % Initialize some useful values
 m = length(y); % number of training examples
-
+n=siz(X(1,:));
 % You need to return the following variables correctly 
 J = 0;
 grad = zeros(size(theta));
@@ -31,14 +31,13 @@ grad = zeros(size(theta));
 htheta = sigmoid(X*theta);
 error = htheta - y;
 grad = ((1/m)) * ((X' * error));
-temp = theta;
-temp(1) = 0;
-regularization = zeros(size(temp));
-regularization(2:size(regularization))  =  ((lambda/(2*m)) * sum(temp(2:size(lambda)).*temp(2:size(lambda))));
+
+regularization = zeros(size(theta));
+regularization(2:size(regularization))  =  ((lambda/(2*m)) * sum(theta(2:size(theta)).^2));
 %J = (1/m)  *  sum(((y.*-1) .* log(htheta)) - ((1.-y) .* log(1.-htheta)));
 J = ( (1/m)  *  sum(((y.*-1) .* log(htheta)) - ((1.-y) .* log(1.-htheta))) ) + regularization;
-regularization = zeros(size(temp));
-regularization(2:size(regularization))  = ((lambda/m) .* temp(2:size(temp)));
+regularization = zeros(size(theta));
+regularization(2:size(regularization))  = ((lambda/m) .* theta(2:size(theta)));
 grad = grad + regularization;
 
 
