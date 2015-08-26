@@ -41,7 +41,7 @@ error = htheta - y;
 grad = ((1/m)) * ((X' * error));
 
 regularization = zeros(size(theta));
-regularization(2:size(regularization))  =  ((lambda/(2*m)) * sum(theta(2:size(lambda)).^2)));
+regularization(2:size(regularization))  =  ((lambda/(2*m)) * sum(theta(2:size(lambda)).^2));
 %J = (1/m)  *  sum(((y.*-1) .* log(htheta)) - ((1.-y) .* log(1.-htheta)));
 J = ( (1/m)  *  sum(((y.*-1) .* log(htheta)) - ((1.-y) .* log(1.-htheta))) ) + regularization;
 regularization = zeros(size(theta));
