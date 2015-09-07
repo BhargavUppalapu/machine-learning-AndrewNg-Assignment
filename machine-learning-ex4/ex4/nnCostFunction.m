@@ -94,6 +94,7 @@ endfor
 
 
 icount = size(htheta2,2);
+
 J =0;
 for i = 1:icount
 J =  J + sum ((((Y(:,i).*-1) .* log(htheta2(:,i)))) - ((1.-Y(:,i)) .* log(1.-htheta2(:,i))));
@@ -101,22 +102,39 @@ endfor
 J = (1/m) * J;
 
 
-jcount = size(Theta2,2);
-
-regtheta2 =0;
-for j = 1: jcount 
-regtheta2 = regtheta2  + sum(Theta2(:,2:size(Theta2(:,j))).^2);
-endfor
 
 
-
+icount = size(Theta1,1);
 jcount = size(Theta1,2);
-regtheta=0;
-for j = 1: jcount 
-regtheta = regtheta  + sum(Theta1(:,2:size(Theta1(:,j))).^2);
+iregtheta=0;
+jregtheta =0;
+
+for i= 1:icount
+jregtheta =0;
+for j = 1: jcount - 1
+	jregtheta = jregtheta  + Theta1(i,j)^2;
+endfor
+iregtheta =  iregtheta + jregtheta;
 endfor
 
-regularizationConst =  ((lambda/(2*m)) * (regtheta + regtheta2)) ;
+
+
+icount = size(Theta2,1);
+jcount = size(Theta2,2);
+iregtheta2=0;
+jregtheta2 =0;
+
+for i= 1:icount
+jregtheta2 =0;
+	for j = 1: jcount - 1
+		jregtheta2 = jregtheta2  + Theta2(i:size(Theta2(:,j))).^2;
+	endfor
+iregtheta2 =  iregtheta2 + jregtheta2;
+endfor
+
+
+
+regularizationConst =  ((lambda/(2*m)) * (jregtheta + jregtheta2)) ;
 
 
 J = J + regularizationConst ;
