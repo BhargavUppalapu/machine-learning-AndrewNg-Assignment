@@ -64,6 +64,8 @@ Theta2_grad = zeros(size(Theta2));
 
 X = [ones(m, 1) X];
 htheta = X * Theta1';
+
+
 icount = size(htheta,1);
 jcount = size(htheta,2);
 
@@ -74,13 +76,29 @@ for ii = 1 : icount
 	endfor
 endfor
 
+htheta = [ones(m,1) htheta];
+
+htheta2  = htheta * Theta2';
+icount = size(htheta2,1);
+jcount = size(htheta2,2);
+for ii = 1 : icount
+	for j = 1:jcount
+	htheta2(ii,j) = sigmoid(htheta2(ii,j));
+	endfor
+endfor
+
+Y = zeros(size(htheta2));
+for i= 1: icount
+Y(i,y(i)) = 1;
+endfor
+icount = size(htheta2,2);
+J =0;
 
 
-
-
-
-
-
+for i = 1:icount
+J =  J + sum ((((Y(:,i).*-1) .* log(htheta2(:,i)))) - ((1.-Y(:,i)) .* log(1.-htheta2(:,i))));
+endfor
+J = (1/m) * J;
 
 
 
