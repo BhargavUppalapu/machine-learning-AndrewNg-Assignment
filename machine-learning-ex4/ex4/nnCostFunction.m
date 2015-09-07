@@ -126,15 +126,15 @@ jregtheta2 =0;
 
 for i= 1:icount
 jregtheta2 =0;
-	for j = 1: jcount - 1
-		jregtheta2 = jregtheta2  + Theta2(i:size(Theta2(:,j))).^2;
-	endfor
+for j = 1: jcount - 1
+	jregtheta2 = jregtheta2  + Theta2(i,j)^2;
+endfor
 iregtheta2 =  iregtheta2 + jregtheta2;
 endfor
 
 
 
-regularizationConst =  ((lambda/(2*m)) * (jregtheta + jregtheta2)) ;
+regularizationConst =  ((lambda/(2*m)) * (iregtheta + iregtheta2)) ;
 
 
 J = J + regularizationConst ;
