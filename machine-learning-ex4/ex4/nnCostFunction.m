@@ -62,9 +62,17 @@ Theta2_grad = zeros(size(Theta2));
 %               and Theta2_grad from Part 2.
 %
 
+X = [ones(m, 1) X];
+htheta = X * Theta1';
+icount = size(htheta,1);
+jcount = size(htheta,2);
 
 
-
+for ii = 1 : icount
+	for j = 1:jcount
+	htheta(ii,j) = sigmoid(htheta(ii,j));
+	endfor
+endfor
 
 
 
