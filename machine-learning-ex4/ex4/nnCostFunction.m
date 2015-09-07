@@ -101,20 +101,20 @@ endfor
 J = (1/m) * J;
 
 
-icount = size(htheta2,1);
-jcount = size(htheta2,2);
+jcount = size(Theta2,2);
 
 regtheta2 =0;
-for j = 1: icount 
-regtheta2 = regtheta2  + sum(Theta2(2:size(Theta2(:,i))).^2);
+for j = 1: jcount 
+regtheta2 = regtheta2  + sum(Theta2(2:size(Theta2(:,j))).^2);
 endfor
 
+
+
+jcount = size(Theta1,2);
 regtheta=0;
-for j = 1: icount 
-regtheta = regtheta  + sum(Theta1(2:size(Theta1(:,i))).^2);
+for j = 1: jcount 
+regtheta = regtheta  + sum(Theta1(2:size(Theta1(:,j))).^2);
 endfor
-
-
 
 regularizationConst =  ((lambda/(2*m)) * (regtheta + regtheta2)) ;
 
