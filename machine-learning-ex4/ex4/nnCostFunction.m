@@ -105,7 +105,7 @@ jcount = size(Theta2,2);
 
 regtheta2 =0;
 for j = 1: jcount 
-regtheta2 = regtheta2  + sum(Theta2(2:size(Theta2(:,j))).^2);
+regtheta2 = regtheta2  + sum(Theta2(:,2:size(Theta2(:,j))).^2);
 endfor
 
 
@@ -113,7 +113,7 @@ endfor
 jcount = size(Theta1,2);
 regtheta=0;
 for j = 1: jcount 
-regtheta = regtheta  + sum(Theta1(2:size(Theta1(:,j))).^2);
+regtheta = regtheta  + sum(Theta1(:,2:size(Theta1(:,j))).^2);
 endfor
 
 regularizationConst =  ((lambda/(2*m)) * (regtheta + regtheta2)) ;
