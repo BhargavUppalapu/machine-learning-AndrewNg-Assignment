@@ -111,7 +111,7 @@ jregtheta =0;
 
 for i= 1:icount
 jregtheta =0;
-for j = 1: jcount - 1
+for j = 2 : jcount 
 	jregtheta = jregtheta  + Theta1(i,j)^2;
 endfor
 iregtheta =  iregtheta + jregtheta;
@@ -126,7 +126,7 @@ jregtheta2 =0;
 
 for i= 1:icount
 jregtheta2 =0;
-for j = 1: jcount - 1
+for j = 2 : jcount 
 	jregtheta2 = jregtheta2  + Theta2(i,j)^2;
 endfor
 iregtheta2 =  iregtheta2 + jregtheta2;
