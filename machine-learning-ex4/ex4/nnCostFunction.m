@@ -149,10 +149,10 @@ Y(i,y(i)) = 1;
 endfor
 
 Delta_1 = zeros(size(Theta1));
-Delta_2 = zeros(size(Theta2))
+Delta_2 = zeros(size(Theta2));
 
 for t=1:m
-	a_1 = X(t,:)'
+	a_1 = X(t,:)';
 	z_2 = Theta1 * a_1;
 	a_2 = sigmoid(z_2);
 	a_2 = [1;a_2]
