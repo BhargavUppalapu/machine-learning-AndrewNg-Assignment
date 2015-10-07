@@ -174,8 +174,8 @@ endfor
 
 
 % =========================================================================
-Theta1_grad = (1/m) .* Delta_1;
-Theta2_grad = (1/m) .* Delta_2;
+Theta1_grad = (1/m) * Delta_1;
+Theta2_grad = (1/m) * Delta_2;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
