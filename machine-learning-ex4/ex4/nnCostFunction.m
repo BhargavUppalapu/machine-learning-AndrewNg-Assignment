@@ -87,17 +87,17 @@ for ii = 1 : icount
 	endfor
 endfor
 
-Y = zeros(size(htheta2));
-for i= 1: icount
-Y(i,y(i)) = 1;
-endfor
+%Y = zeros(size(htheta2));
+%for i= 1: icount
+%Y(i,y(i)) = 1;
+%endfor
 
 
 icount = size(htheta2,2);
 
 J =0;
 for i = 1:icount
-J =  J + sum ((((Y(:,i).*-1) .* log(htheta2(:,i)))) - ((1.-Y(:,i)) .* log(1.-htheta2(:,i))));
+J =  J + sum ((((y(:,i).*-1) .* log(htheta2(:,i)))) - ((1.-y(:,i)) .* log(1.-htheta2(:,i))));
 endfor
 J = (1/m) * J;
 
@@ -142,11 +142,10 @@ J = J + regularizationConst ;
 
 % -------------------------------------------------------------
 
-Y = zeros(size(X,1), size(Theta2,1));
-
-for i= 1: icount
-Y(i,y(i)) = 1;
-endfor
+%Y = zeros(size(X,1), size(Theta2,1));
+%for i= 1: icount
+%Y(i,y(i)) = 1;
+%endfor
 
 Delta_1 = zeros(size(Theta1));
 Delta_2 = zeros(size(Theta2));
@@ -158,7 +157,7 @@ for t=1:m
 	a_2 = [1;a_2];
 	z_3 = Theta2 * a_2;
 	a_3 = sigmoid(z_3);
-	delta_3 = a_3 - Y(t);
+	delta_3 = a_3 - y(t);
 	z_2 = [1;z_2];
 	delta_2 = Theta2'*delta_3.*sigmoidGradient(z_2);
 	delta_2 = delta_2(2:end);
