@@ -151,6 +151,8 @@ endfor
 Delta_1 = zeros(size(Theta1));
 Delta_2 = zeros(size(Theta2));
 
+
+
 for t=1:m
 	a_1 = X(t,:)';
 	%a_1 = [1;a_1];
@@ -160,7 +162,7 @@ for t=1:m
 	z_3 = Theta2 * a_2;
 	a_3 = sigmoid(z_3);
 	
-	delta_3 = a_3 - Y(t);
+	delta_3 = a_3 - Y(t,:)';
 	z_2 = [1;z_2];
 
 	delta_2 = (Theta2'*delta_3) .* sigmoidGradient(z_2);
