@@ -61,7 +61,7 @@ Theta2_grad = zeros(size(Theta2));
 %               the regularization separately and then add them to Theta1_grad
 %               and Theta2_grad from Part 2.
 %
-
+X_T = X;
 X = [ones(m, 1) X];
 htheta = X * Theta1';
 
@@ -144,7 +144,7 @@ J = J + regularizationConst ;
 
 Y = zeros(size(X,1), size(Theta2,1));
 
-for i= 1: icount
+for i= 1: size(X,1)
 Y(i,y(i)) = 1;
 endfor
 
@@ -152,10 +152,12 @@ Delta_1 = zeros(size(Theta1));
 Delta_2 = zeros(size(Theta2));
 
 
+X=X_T;
+
 
 for t=1:m
 	a_1 = X(t,:)';
-	%a_1 = [1;a_1];
+	a_1 = [1;a_1];
 	z_2 = Theta1 * a_1;
 	a_2 = sigmoid(z_2);
 	a_2 = [1;a_2];
@@ -165,7 +167,7 @@ for t=1:m
 	delta_3 = a_3 - Y(t,:)';
 	z_2 = [1;z_2];
 
-	delta_2 = (Theta2'*delta_3) .* sigmoidGradient(z_2);
+	delta_2 =  Theta2' * delta_3 .* sigmoidGradient(z_2);
 	
 	delta_2 = delta_2(2:end);
 	Delta_1 = Delta_1 + delta_2 * a_1';
@@ -179,8 +181,8 @@ endfor
 
 
 % =========================================================================
-Theta1_grad = (1/m) * Delta_1;
-Theta2_grad = (1/m) * Delta_2;
+Theta1_grad = (1/m) .* Delta_1;
+Theta2_grad = (1/m) .* Delta_2;
 
 % Unroll gradients
 grad = [Theta1_grad(:) ; Theta2_grad(:)];
