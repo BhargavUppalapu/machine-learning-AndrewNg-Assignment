@@ -27,8 +27,12 @@ J= ( (1/(2*m)) *sum(squareError) )+  regularizationConst;
 %Regularized Linear Regression Gradiant
 hypthesis = X * theta ;
 error = hypthesis - y;
-grad = ((1/m)) * (( X'*error) ) + ((lambda/m) * theta);
+grad = ((1/m)) * (( X'*error) )  ;
 
+gradRegularization = zeros(size(theta));
+gradRegularization = ((lambda/m) * theta);
+gradRegularization(1) = 0;
+grad = grad + gradRegularization;
 % =========================================================================
 
 grad = grad(:);
