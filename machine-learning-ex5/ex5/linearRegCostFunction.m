@@ -21,19 +21,13 @@ grad = zeros(size(theta));
 
 predictions = X*theta;
 squareError = (predictions-y).^2;
-
-
 regularizationConst =  ((lambda/(2*m)) * sum(theta(2:size(theta)).^2));
-
 J= ( (1/(2*m)) *sum(squareError) )+  regularizationConst;
 
-
-
-
-
-
-
-
+%Regularized Linear Regression Gradiant
+hypthesis = X * theta ;
+error = hypthesis - y;
+grad = ((1/m)) * (( X'*error) ) + ((lambda/m) * theta);
 
 % =========================================================================
 
