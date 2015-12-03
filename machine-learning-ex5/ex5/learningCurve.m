@@ -62,9 +62,9 @@ for i = 1:m
 	[theta] = trainLinearReg(X(1:i,:), y(1:i), lambda);
 	error_train(i) = linearRegCostFunction(X(1:i,:), y(1:i), theta, 0);
 	
-	theta_validation = [1;1];
-	[theta_validation] = trainLinearReg(Xval(1:i,:), yval(1:i), lambda);
-	error_val(i) = linearRegCostFunction(Xval, yval, theta_validation,0 );
+	%theta_validation = [1;1];
+	%[theta_validation] = trainLinearReg(Xval, yval, lambda);
+	error_val(i) = linearRegCostFunction(Xval, yval, theta,0 );
 end
 
 
