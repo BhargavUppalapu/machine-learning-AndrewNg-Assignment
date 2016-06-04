@@ -37,7 +37,7 @@ for j = 1:K
          
     
   end
-  centroids(j,:) =   sumofterms;
+  centroids(j,:) =   sumofterms ./ numof;
    
   
 end
