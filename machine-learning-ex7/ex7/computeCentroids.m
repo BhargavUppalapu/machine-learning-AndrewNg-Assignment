@@ -26,8 +26,8 @@ centroids = zeros(K, n);
 % Note: You can use a for-loop over the centroids to compute this.
 %
 for j = 1:K
-  sumofterms =[0,0];
-  numof = 0;
+  sumofterms = zeros(size(X(1,:)));
+  numof = 1;
   for i=1:size(X,1)
     
     if(idx(i) == j)
