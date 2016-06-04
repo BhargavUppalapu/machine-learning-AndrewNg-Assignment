@@ -27,7 +27,7 @@ centroids = zeros(K, n);
 %
 for j = 1:K
   sumofterms = zeros(size(X(1,:)));
-  numof = 1;
+  numof = 0;
   for i=1:size(X,1)
     
     if(idx(i) == j)
@@ -37,6 +37,8 @@ for j = 1:K
          
     
   end
+  
+  
   centroids(j,:) =   sumofterms ./ numof;
    
   
