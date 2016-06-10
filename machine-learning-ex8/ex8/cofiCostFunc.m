@@ -18,7 +18,7 @@ X_grad = zeros(size(X));
 Theta_grad = zeros(size(Theta));
 
 % ====================== YOUR CODE HERE ======================
-% Instructions: Compute the cost function and gradient for collaborative
+% Instructions: Compute the cost functio  WQAn and gradient for collaborative
 %               filtering. Concretely, you should first implement the cost
 %               function (without regularization) and make sure it is
 %               matches our costs. After that, you should implement the 
@@ -40,8 +40,7 @@ Theta_grad = zeros(size(Theta));
 %                     partial derivatives w.r.t. to each element of Theta
 %
 
-
-
+  J = sum(sum((Theta * X').^2));
 
 
 
